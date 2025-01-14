@@ -8,16 +8,16 @@ app = Flask(__name__)
 def index():
     return '<h1>Python Operations with Flask Routing and Views</h1>'
 
-@app.route('/print/parameter')
+@app.route('/print/<string>')
 def print_string(string):
     print(string)
     return string
 
-@app.route('/count/parameter')
+@app.route('/count/<int:number>')
 def count(number):
     return '\n'.join(str(i) for i in range(number)) + '\n'
 
-@app.route('/math/<num1>/<operation>/<num2>')
+@app.route('/math/<int:num1>/<operation>/<int:num2>')
 def math(num1, operation, num2):
     if operation == '+':
         return str(num1 + num2)
@@ -25,7 +25,7 @@ def math(num1, operation, num2):
         return str(num1 - num2)
     elif operation == '*':
         return str(num1 * num2)
-    elif operation == 'dev':
+    elif operation == 'div':
         return str(num1 / num2)
     elif operation == '%':
         return str(num1 % num2)
